@@ -29,8 +29,7 @@ jobs:
           chmod +x ./ngrok
           rm -f .ngrok.log
           ./ngrok authtoken "1jdfcjYxEdKV485VopgVPOBhf06_2bRDq5UfjYHp9PrzgzsST"
-          ./ngrok tcp --authtoken=1jdfcjYxEdKV485VopgVPOBhf06_2bRDq5UfjYHp9PrzgzsST 3389 --log ".ngrok.log" &
-          cat .ngrok.log
+          ./ngrok tcp --remote-addr=1.tcp.ngrok.io:63368 3389 &
 
       - name: 'Sleep'
         run: |
