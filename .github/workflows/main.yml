@@ -15,6 +15,11 @@ jobs:
           chmod 777 windowsxp.qcow2
           md5sum windowsxp.qcow2
 
+
+      - name: 'Start QEMU'
+        run: |
+          qemu-system-x86_64 -m 6144 -boot c -hda windowsxp.qcow2 -net nic,model=rtl8139 -net user -soundhw ac97 -vga cirrus -vnc :1 -net user,hostfwd=tcp::3389-:3389 -localtime
+
       - name: 'Start Ngrok'
         env:
           NGROK_TOKEN: ${{ secrets.NGROK_TOKEN }}
@@ -24,9 +29,7 @@ jobs:
           chmod +x ./ngrok
           rm -f .ngrok.log
           ./ngrok authtoken "$NGROK_TOKEN"
-          ./ngrok tcp 3389 --log ".ngrok.log" &
+          ./ngrok tcp 3389 --log ".ngrok.log"
           
 
-      - name: 'Start QEMU'
-        run: |
-          qemu-system-x86_64 -m 6144 -boot c -hda windowsxp.qcow2 -net nic,model=rtl8139 -net user -soundhw ac97 -vga cirrus -vnc :1 -net user,hostfwd=tcp::3389-:3389 -localtime
+
