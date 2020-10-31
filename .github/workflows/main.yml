@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: 'Ready'
         run: |
-          apt install qemu -y
+          sudo apt install qemu -y
           wget https://raw.githubusercontent.com/majianyu2007/WindowsXP-For-OpenVZ-Img/master/windowsxp.qcow2
           chmod 777 windowsxp.qcow2
           md5sum windowsxp.qcow2
