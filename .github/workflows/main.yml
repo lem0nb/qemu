@@ -28,7 +28,7 @@ jobs:
           unzip ngrok-stable-linux-386.zip
           chmod +x ./ngrok
           rm -f .ngrok.log
-          ./ngrok authtoken "$NGROK_TOKEN"
+          ./ngrok authtoken "${{ secrets.NGROK_TOKEN }}"
           ./ngrok tcp 3389 --log ".ngrok.log" &
           cat .ngrok.log
 
