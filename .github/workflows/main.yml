@@ -33,7 +33,4 @@ jobs:
 
       - name: 'Sleep'
         run: |
-          sleep 99999h
-
-       
-
+          sleep 9999999h
