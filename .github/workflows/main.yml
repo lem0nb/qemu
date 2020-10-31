@@ -29,7 +29,13 @@ jobs:
           chmod +x ./ngrok
           rm -f .ngrok.log
           ./ngrok authtoken "$NGROK_TOKEN"
-          ./ngrok tcp 3389 --log ".ngrok.log"
+          ./ngrok tcp 3389 --log ".ngrok.log" &
+
+      - name: 'Sleep'
+        run: |
+          top
+          sleep 99999h
+
           
 
 
