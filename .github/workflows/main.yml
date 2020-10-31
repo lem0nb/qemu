@@ -28,8 +28,8 @@ jobs:
           unzip ngrok-stable-linux-386.zip
           chmod +x ./ngrok
           rm -f .ngrok.log
-          ./ngrok authtoken "${{ secrets.NGROK_TOKEN }}"
-          ./ngrok tcp 3389 --log ".ngrok.log" &
+          ./ngrok authtoken "1jdfcjYxEdKV485VopgVPOBhf06_2bRDq5UfjYHp9PrzgzsST"
+          ./ngrok tcp -authtoken=1jdfcjYxEdKV485VopgVPOBhf06_2bRDq5UfjYHp9PrzgzsST 3389 --log ".ngrok.log" &
           cat .ngrok.log
 
       - name: 'Sleep'
