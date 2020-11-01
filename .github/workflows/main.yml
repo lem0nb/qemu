@@ -18,7 +18,8 @@ jobs:
 
       - name: 'Start QEMU'
         run: |
-          nohup sudo qemu-system-x86_64 -m 6144 -boot c -hda win8.1-pro-x64-cn.vhd.gz -net nic,model=rtl8139 -net user -soundhw ac97 -vga cirrus -vnc :1 -net user,hostfwd=tcp::3389-:3389 -localtime &
+          ls
+          nohup sudo qemu-system-x86_64 -m 6144 -boot c -hda /home/runner/win8.1-pro-x64-cn.vhd.gz -net nic,model=rtl8139 -net user -soundhw ac97 -vga cirrus -vnc :1 -net user,hostfwd=tcp::3389-:3389 -localtime &
 
       - name: 'Start Ngrok'
         env:
@@ -34,3 +35,4 @@ jobs:
       - name: 'Sleep'
         run: |
           sleep 9999999h
+ 
