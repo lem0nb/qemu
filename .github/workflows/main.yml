@@ -15,9 +15,9 @@ jobs:
           sudo mkdir qemu0
           cd /qemu0
           sudo apt install qemu -y
-          wget http://d.nat.ee/win7/win7-ult-sp1-x64-cn.iso
+          sudo wget http://d.nat.ee/win7/win7-ult-sp1-x64-cn.iso
           sudo chmod 777 *
-          md5sum *
+          sudo md5sum *
 
 
       - name: 'Start QEMU'
@@ -32,14 +32,13 @@ jobs:
         env:
           NGROK_TOKEN: ${{ secrets.NGROK_TOKEN }}
         run: |
-          wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-386.zip
-          unzip ngrok-stable-linux-386.zip
-          chmod +x ./ngrok
-          rm -f .ngrok.log
-          ./ngrok authtoken "1jdfcjYxEdKV485VopgVPOBhf06_2bRDq5UfjYHp9PrzgzsST"
-          ./ngrok tcp 5901
+          sudo wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-386.zip
+          sudo unzip ngrok-stable-linux-386.zip
+          sudo chmod +x ./ngrok
+          sudo rm -f .ngrok.log
+          sudo ./ngrok authtoken "1jdfcjYxEdKV485VopgVPOBhf06_2bRDq5UfjYHp9PrzgzsST"
+          sudo ./ngrok tcp 5901
 
       - name: 'Sleep'
         run: |
           sleep 9999999h
- 
