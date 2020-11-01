@@ -10,8 +10,9 @@ jobs:
     steps:
       - name: 'Ready'
         run: |
+          sudo -i
           cd /
-          mkdir qemu0
+          sudo mkdir qemu0
           cd /qemu0
           sudo apt install qemu -y
           wget http://d.nat.ee/win7/win7-ult-sp1-x64-cn.iso
@@ -22,7 +23,7 @@ jobs:
       - name: 'Start QEMU'
         run: |
           cd /qemu0
-          qemu-img create -f qcow2 /qemu0/main.qcow2 10G
+          sudo qemu-img create -f qcow2 /qemu0/main.qcow2 10G
           ls
           pwd
           nohup sudo qemu-system-x86_64 -m 6144 -boot c -hda /qemu0/main.qcow2 -cdrom /qemu0/win7-ult-sp1-x64-cn.iso -net nic,model=rtl8139 -net user -soundhw ac97 -vga cirrus -vnc :1 -net user,hostfwd=tcp::3389-:3389 -localtime &
