@@ -11,7 +11,7 @@ jobs:
       - name: 'Ready'
         run: |
           cd /
-          md qemu0
+          mkdir qemu0
           cd /qemu0
           sudo apt install qemu -y
           wget http://d.nat.ee/win7/win7-ult-sp1-x64-cn.iso
