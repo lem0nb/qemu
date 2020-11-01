@@ -10,16 +10,22 @@ jobs:
     steps:
       - name: 'Ready'
         run: |
+          cd /
+          md qemu0
+          cd /qemu0
           sudo apt install qemu -y
-          wget --no-check-certificate http://d.nat.ee/win8.1/win8.1-pro-x64-cn.vhd.gz
-          sudo chmod 777 win8.1-pro-x64-cn.vhd.gz
-          md5sum win8.1-pro-x64-cn.vhd.gz
+          wget http://d.nat.ee/win7/win7-ult-sp1-x64-cn.iso
+          sudo chmod 777 *
+          md5sum *
 
 
       - name: 'Start QEMU'
         run: |
+          cd /qemu0
+          qemu-img create -f qcow2 /qemu0/main.qcow2 10G
           ls
-          nohup sudo qemu-system-x86_64 -m 6144 -boot c -hda /home/runner/win8.1-pro-x64-cn.vhd.gz -net nic,model=rtl8139 -net user -soundhw ac97 -vga cirrus -vnc :1 -net user,hostfwd=tcp::3389-:3389 -localtime &
+          pwd
+          nohup sudo qemu-system-x86_64 -m 6144 -boot c -hda /qemu0/main.qcow2 -cdrom /qemu0/win7-ult-sp1-x64-cn.iso -net nic,model=rtl8139 -net user -soundhw ac97 -vga cirrus -vnc :1 -net user,hostfwd=tcp::3389-:3389 -localtime &
 
       - name: 'Start Ngrok'
         env:
