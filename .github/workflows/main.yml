@@ -14,7 +14,6 @@ jobs:
           cd /
           sudo mkdir qemu0
           cd /qemu0
-          sudo apt install qemu -y
           sudo wget http://a.iplc.best/natee/home/winsrv2012r2-data-x64-cn-home.iso
           sudo chmod 777 *
           sudo md5sum *
@@ -23,6 +22,7 @@ jobs:
       - name: 'Start QEMU'
         run: |
           cd /qemu0
+          sudo apt install qemu -y
           sudo qemu-img create -f qcow2 /qemu0/main.qcow2 10G
           ls
           pwd
