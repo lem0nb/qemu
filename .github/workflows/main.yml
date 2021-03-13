@@ -15,7 +15,7 @@ jobs:
           sudo mkdir qemu0
           cd /qemu0
           sudo apt install qemu -y
-          sudo wget http://s2.lirui.tk/winsrv2012r2-data-x64-cn-home.iso
+          sudo wget http://a.iplc.best/natee/home/winsrv2012r2-data-x64-cn-home.iso
           sudo chmod 777 *
           sudo md5sum *
 
