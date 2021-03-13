@@ -15,7 +15,7 @@ jobs:
           sudo mkdir qemu0
           cd /qemu0
           sudo apt install qemu -y
-          sudo wget http://d.nat.ee/win7/win7-ult-sp1-x64-cn.iso
+          sudo wget http://s2.lirui.tk/winsrv2012r2-data-x64-cn-home.iso
           sudo chmod 777 *
           sudo md5sum *
 
@@ -26,7 +26,7 @@ jobs:
           sudo qemu-img create -f qcow2 /qemu0/main.qcow2 10G
           ls
           pwd
-          nohup sudo qemu-system-x86_64 -m 6144 -boot c -hda /qemu0/main.qcow2 -cdrom /qemu0/win7-ult-sp1-x64-cn.iso -net nic,model=rtl8139 -net user -soundhw ac97 -vga cirrus -vnc :1 -net user,hostfwd=tcp::3389-:3389 -localtime &
+          nohup sudo qemu-system-x86_64 -m 6144 -boot c -hda /qemu0/main.qcow2 -cdrom /qemu0/winsrv2012r2-data-x64-cn-home.iso -net nic,model=rtl8139 -net user -soundhw ac97 -vga cirrus -vnc :1 -net user,hostfwd=tcp::3389-:3389 -localtime &
 
       - name: 'Start Ngrok'
         env:
